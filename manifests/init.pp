@@ -90,7 +90,7 @@ class nodejs(
     require => Anchor['nodejs::repo']
   }
 
-  if $nodejs::param::npm_pkg {
+  if $nodejs::params::npm_pkg {
     package { 'npm':
       name    => $nodejs::params::npm_pkg,
       ensure  => present,
