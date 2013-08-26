@@ -13,8 +13,11 @@ class nodejs::params {
   case $::operatingsystem {
     'Debian', 'Ubuntu': {
       $node_pkg = 'nodejs'
-      $npm_pkg  = 'npm'
-      $dev_pkg  = 'nodejs-dev'
+
+      if ! $::nodejs::manage_repo {
+        $dev_pkg = 'nodejs-dev'
+        $npm_pkg = 'npm'
+      }
     }
 
     'SLES', 'OpenSuSE': {
